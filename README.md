@@ -63,9 +63,9 @@ This project utilizes Laravel Breeze for authentication, providing a robust and 
 
 -   **Laravel Optimize Clear Once:**
 
-```bash
-php artisan serve
-```
+    ```bash
+    php artisan optimize:clear
+    ```
 
 -   **Run in one terminal Laravel Server:**
     ```bash
