@@ -58,7 +58,7 @@ Laravel Dusk is a powerful browser automation testing tool. Here's how to set it
     ```
     This command creates a separate environment file specifically for Dusk tests, preventing conflicts with your main application environment.
 
--   **Edit `.env.dusk.local`:**
+-   **OR Edit mysql `.env.dusk.local`:**
     Open the newly created `.env.dusk.local` file and configure it as follows:
 
     ```ini
@@ -69,18 +69,34 @@ Laravel Dusk is a powerful browser automation testing tool. Here's how to set it
     APP_URL=http://localhost:8000
 
     # MySQLite Test Database Configuration
-    # DB_CONNECTION=sqlite
-    # DB_DATABASE=database/testing.sqlite , Command : touch database/testing.sqlite
+    DB_CONNECTION=sqlite
+    DB_DATABASE=database/testing.sqlite # Command : touch database/testing.sqlite
 
-    # MySQL Test Database Configuration (Uncomment and configure if using MySQL)
-    DB_CONNECTION=mysql
-    DB_HOST=127.0.0.1 # or your MySQL host
-    DB_PORT=3306 # default MySQL port
-    DB_DATABASE=test_database_dusk # dedicated test database
-    DB_USERNAME=root # or your MySQL username
-    DB_PASSWORD=123456 # your MySQL password
+    SESSION_DRIVER=file
+    CACHE_DRIVER=array
+    QUEUE_CONNECTION=sync
+    MAIL_MAILER=array
 
-    SESSION_DRIVER=array
+    # ChromeDriver Specific Configurations
+    DUSK_DRIVER_URL=http://localhost:9515
+    CHROME_PATH=/usr/bin/google-chrome # Replace with your Google Chrome browser path
+    DUSK_HEADLESS=false # Set to `false` for real-time browser interaction during tests; `true` for hidden background testing.
+    ```
+-   **Edit sqlite `.env.dusk.local`:**
+    Open the newly created `.env.dusk.local` file and configure it as follows:
+
+    ```ini
+    APP_NAME=DuskIntegrationE2ETesting
+    APP_ENV=dusk.local
+    APP_KEY=base64:fUUR4u1gv1UOnUWmc1KvBbrdc/Y5Uv6IDDDIAZRixNQ=
+    APP_DEBUG=true
+    APP_URL=http://localhost:8000
+
+    # MySQLite Test Database Configuration
+    DB_CONNECTION=sqlite
+    DB_DATABASE=database/testing.sqlite # Command : touch database/testing.sqlite
+
+    SESSION_DRIVER=file
     CACHE_DRIVER=array
     QUEUE_CONNECTION=sync
     MAIL_MAILER=array
