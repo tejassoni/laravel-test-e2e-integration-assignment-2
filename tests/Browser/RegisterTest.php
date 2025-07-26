@@ -141,8 +141,8 @@ class RegisterTest extends DuskTestCase
 
             $browser->screenshot('after-pressing-register');
 
-            // $browser->assertPathIs('/dashboard')
-            // ->assertSee('Dashboard'); // Adjust this text based on your actual dashboard content
+            $browser->assertPathIs('/dashboard')
+            ->assertSee('Dashboard'); // Adjust this text based on your actual dashboard content
             $browser->pause(1500);
             $browser->screenshot('after-register-success');
         });

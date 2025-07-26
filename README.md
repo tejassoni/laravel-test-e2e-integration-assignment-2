@@ -165,3 +165,9 @@ This project utilizes Laravel Breeze for authentication, providing a robust and 
     php artisan dusk:make RegisterTest
     ```
     This command will create a new Dusk test file at `tests/Browser/RegisterTest.php`, where you can write your authentication test scenarios. You can then add code within this file to simulate user registration, login, and other authentication-related actions.
+
+-   **Make LoginTest:** `tests/Browser/LoginTest.php`
+    ```bash
+    php artisan dusk:make LoginTest
+    ```
+    This command will create a new Dusk test file at `tests/Browser/LoginTest.php`, where you can write scenarios to verify the user login process, including successful authentication and redirection.
