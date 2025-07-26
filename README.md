@@ -53,12 +53,14 @@ Laravel Dusk is a powerful browser automation testing tool. Here's how to set it
     php artisan dusk:install
     ```
 -   **Create `.env.dusk.local`:**
+
     ```bash
     cp .env .env.dusk.local
     ```
+
     This command creates a separate environment file specifically for Dusk tests, preventing conflicts with your main application environment.
 
--   **OR Edit mysql `.env.dusk.local`:**
+-   **OR Edit sqlite `.env.dusk.local`:**
     Open the newly created `.env.dusk.local` file and configure it as follows:
 
     ```ini
@@ -82,7 +84,8 @@ Laravel Dusk is a powerful browser automation testing tool. Here's how to set it
     CHROME_PATH=/usr/bin/google-chrome # Replace with your Google Chrome browser path
     DUSK_HEADLESS=false # Set to `false` for real-time browser interaction during tests; `true` for hidden background testing.
     ```
--   **Edit sqlite `.env.dusk.local`:**
+
+-   **OR Edit MySql `.env.dusk.local`:**
     Open the newly created `.env.dusk.local` file and configure it as follows:
 
     ```ini
@@ -92,11 +95,20 @@ Laravel Dusk is a powerful browser automation testing tool. Here's how to set it
     APP_DEBUG=true
     APP_URL=http://localhost:8000
 
-    # MySQLite Test Database Configuration
-    DB_CONNECTION=sqlite
-    DB_DATABASE=database/testing.sqlite # Command : touch database/testing.sqlite
+    # MySQL Test Database Configuration
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1 # or your MySQL host
+    DB_PORT=3306 # default MySQL port
+    DB_DATABASE=test_database_dusk # dedicated test database
+    DB_USERNAME=root # or your MySQL username
+    DB_PASSWORD=123456 # your MySQL password
 
-    SESSION_DRIVER=file
+    SESSION_DRIVER=array
+    CACHE_DRIVER=array
+    QUEUE_CONNECTION=sync
+    MAIL_MAILER=array
+
+    SESSION_DRIVER=array
     CACHE_DRIVER=array
     QUEUE_CONNECTION=sync
     MAIL_MAILER=array
@@ -108,16 +120,18 @@ Laravel Dusk is a powerful browser automation testing tool. Here's how to set it
     ```
 
     **Note:**
-    * **`DB_DATABASE=/absolute/path/to/database/database.sqlite`**: Remember to replace `/absolute/path/to/database/database.sqlite` with the actual absolute path to your desired SQLite database file for testing.
-    * **MySQL Configuration**: If you prefer to use MySQL for your Dusk tests, uncomment the MySQL section and provide your database credentials. Ensure the `test_database_dusk` database exists.
-    * **`CHROME_PATH`**: Verify and update this path to the correct installation location of Google Chrome on your system.
-    * **`DUSK_HEADLESS`**: Set this to `false` if you want to see the browser opening and interacting during the tests, which is useful for debugging. For continuous integration or hidden testing, set it to `true`.
+
+    -   **`DB_DATABASE=/absolute/path/to/database/database.sqlite`**: Remember to replace `/absolute/path/to/database/database.sqlite` with the actual absolute path to your desired SQLite database file for testing.
+    -   **MySQL Configuration**: If you prefer to use MySQL for your Dusk tests, uncomment the MySQL section and provide your database credentials. Ensure the `test_database_dusk` database exists.
+    -   **`CHROME_PATH`**: Verify and update this path to the correct installation location of Google Chrome on your system.
+    -   **`DUSK_HEADLESS`**: Set this to `false` if you want to see the browser opening and interacting during the tests, which is useful for debugging. For continuous integration or hidden testing, set it to `true`.
 
 -   **Laravel Optimize Clear Once:**
 
     ```bash
     php artisan optimize:clear
     ```
+
     This command clears various cached files to ensure your application runs with the latest configurations.
 
 ---
@@ -127,9 +141,11 @@ Laravel Dusk is a powerful browser automation testing tool. Here's how to set it
 To run your application and execute Dusk tests, you'll need two separate terminal instances:
 
 -   **Run Laravel Server (Terminal 1):**
+
     ```bash
     php artisan serve
     ```
+
     This will start your Laravel development server, typically on `http://localhost:8000`.
 
 -   **Run Laravel Dusk (Terminal 2):**
