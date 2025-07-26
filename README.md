@@ -48,20 +48,18 @@ This project utilizes Laravel Breeze for authentication, providing a robust and 
     ```
 -   **Edit .env.dusk.local:**
 
-        ```bash
-        APP_NAME=DuskIntegrationE2ETesting
-
+    ```bash
+    APP_NAME=DuskIntegrationE2ETesting
     APP_ENV=dusk.local
     APP_KEY=base64:fUUR4u1gv1UOnUWmc1KvBbrdc/Y5Uv6IDDDIAZRixNQ=
     APP_DEBUG=true
     APP_URL=http://localhost:8000
 
-    #mysql lite test database
-    #DB_CONNECTION=sqlite
-    #DB_DATABASE=/absolute/path/to/database/database.sqlite
+    mysql lite test database
+    DB_CONNECTION=sqlite
+    DB_DATABASE=/absolute/path/to/database/database.sqlite
 
-    # mysql test database
-
+    mysql test database
     DB_CONNECTION=mysql
     DB_HOST=127.0.0.1 # or your MySQL host
     DB_PORT=3306 # default MySQL port
@@ -74,12 +72,13 @@ This project utilizes Laravel Breeze for authentication, providing a robust and 
     QUEUE_CONNECTION=sync
     MAIL_MAILER=array
 
-    # ChromeDriver specific
+    ChromeDriver specific
 
     DUSK_DRIVER_URL=http://localhost:9515
     CHROME_PATH=/usr/bin/google-chrome # google chrome browser path,
     DUSK_HEADLESS=false # Set false for actual web browser opening and interacting in real-time and type something and true for hidden integration or end 2 end testing without web browser opening
-```
+
+````
 
 -   **Laravel Optimize Clear Once:**
 
@@ -104,3 +103,4 @@ This project utilizes Laravel Breeze for authentication, providing a robust and 
     ```bash
     php artisan dusk:make RegisterTest
     ```
+````
