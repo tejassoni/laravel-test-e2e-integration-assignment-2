@@ -25,4 +25,21 @@ This project utilizes Laravel Breeze for authentication, providing a robust and 
     php artisan migrate
     ```
 
+* **Generate NPM build:**
+    ```bash
+    npm run build
+    ```
+
+* **Install Laravel Dusk:**
+    ```bash
+    composer require --dev laravel/dusk
+    ```
+* **Scaffold Dusk Components:**
+    ```bash
+    php artisan dusk:install
+    ```
+* **Run Laravel Dusk:**
+    ```bash
+    php artisan dusk
+    ```
 ---
