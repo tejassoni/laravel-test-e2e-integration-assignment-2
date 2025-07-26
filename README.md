@@ -69,8 +69,8 @@ Laravel Dusk is a powerful browser automation testing tool. Here's how to set it
     APP_URL=http://localhost:8000
 
     # MySQLite Test Database Configuration
-    DB_CONNECTION=sqlite
-    DB_DATABASE=/absolute/path/to/database/database.sqlite
+    # DB_CONNECTION=sqlite
+    # DB_DATABASE=database/testing.sqlite , Command : touch database/testing.sqlite
 
     # MySQL Test Database Configuration (Uncomment and configure if using MySQL)
     DB_CONNECTION=mysql

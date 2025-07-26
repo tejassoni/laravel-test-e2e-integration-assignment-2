@@ -28,14 +28,14 @@ abstract class DuskTestCase extends BaseTestCase
     protected function driver(): RemoteWebDriver
     {
         $options = (new ChromeOptions)->addArguments(collect([
-            $this->shouldStartMaximized() ? '--start-maximized' : '--window-size=1920,1080',
-            '--disable-search-engine-choice-screen',
-            '--disable-smooth-scrolling',
-            '--disable-extensions',
-            '--disable-dev-shm-usage',
-            '--no-sandbox',
-            '--disable-blink-features=AutomationControlled',
-            '--disable-infobars',
+            $this->shouldStartMaximized() ? '--start-maximized' :  '--window-size=1920,1080', // Set a fixed window size to ensure consistent rendering across environments.
+            '--disable-search-engine-choice-screen', // Disable the initial search engine selection screen on first run.
+            '--disable-smooth-scrolling', // Disable smooth scrolling for faster and more deterministic test execution.
+            '--disable-extensions', // Disable all Chrome extensions to reduce interference during testing.
+            '--disable-dev-shm-usage', // Avoid using /dev/shm; useful in Docker/Linux environments with limited shared memory.
+            '--no-sandbox', // Disable Chrome's security sandbox (required in some headless or restricted environments).
+            '--disable-blink-features=AutomationControlled', // Hide that Chrome is controlled by automation (for anti-bot bypassing).
+            '--disable-infobars', // Remove the “Chrome is being controlled by automated test software” infobar.
         ])->all());
 
         return RemoteWebDriver::create(
@@ -49,6 +49,7 @@ abstract class DuskTestCase extends BaseTestCase
 
     /**
      * Old Create the RemoteWebDriver instance.
+     * if you don't have gui 
      */
     protected function driverOld(): RemoteWebDriver
     {
