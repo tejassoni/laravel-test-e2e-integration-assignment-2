@@ -55,7 +55,7 @@ class LoginTest extends DuskTestCase
         $this->browse(function (Browser $browser) use ($user) {
             // Visit the login page
             $browser->visit('/login')
-                    ->screenshot('before-login-page'); // Capture initial state
+                    ->screenshot('before-login-page'); // Capture initial state screenshot
 
             // Type the user's email and password into the respective fields.
             // Using `typeSlowly` simulates human interaction and can help with flaky tests.
@@ -79,7 +79,7 @@ class LoginTest extends DuskTestCase
             // Assert that specific text is visible on the page to confirm successful login.
             // This could be "Dashboard", "You are logged in!", the user's name, etc.
             $browser->assertSee('Dashboard'); // Example: Change to text that appears on your dashboard
-            $browser->pause(1500); // 1.5 seconds wait
+            $browser->pause(1500); // 1.5 seconds wait, Pause for observation
             $browser->screenshot('after-successful-login'); // Final screenshot of the successful state
         });
     }

@@ -139,9 +139,11 @@ class RegisterTest extends DuskTestCase
     public function testUserCanRegister(): void
     {
         $this->browse(function (Browser $browser) {
+            // Load the registration page
             $browser->visit('/register')
                 ->screenshot('before-register-page');
 
+            // Fill the form using slow typing and reliability guards
             $browser->waitFor('input[name="name"]', 10)->typeSlowly('name', 'Testfirstname Testlastname', 50)
                 ->waitFor('input[name="email"]', 10)->typeSlowly('email', 'test@yopmail.com', 50)
                 ->waitFor('input[name="password"]', 10)->typeSlowly('password', 'Test@123', 50)
@@ -157,9 +159,10 @@ class RegisterTest extends DuskTestCase
 
             $browser->screenshot('after-pressing-register');
 
+            // Assertions to confirm success
             $browser->assertPathIs('/dashboard')
-            ->assertSee('Dashboard'); // Adjust this text based on your actual dashboard content
-            $browser->pause(1500);
+                ->assertSee('Dashboard'); // Adjust this text based on your actual dashboard content
+            $browser->pause(1500); // 1.5 seconds wait, Pause for observation
             $browser->screenshot('after-register-success');
         });
     }
