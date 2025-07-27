@@ -8,8 +8,24 @@ use Facebook\WebDriver\WebDriverBy;
 use Facebook\WebDriver\WebDriverKeys;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
+/**
+ * Class RegisterTest
+ *
+ * Laravel Dusk browser test class for testing user registration flows.
+ *
+ * This class includes:
+ * - A demonstration of multiple ways to interact with form inputs using Laravel Dusk.
+ * - A complete end-to-end test for user registration, including form filling, submission,
+ *   and post-registration assertions.
+ *
+ * @package Tests\Browser
+ * @author Tejas
+ * @contact soni.tejas@live.com
+ */
 class RegisterTest extends DuskTestCase
 {
+    // This trait will ensure a fresh database for each test run,
+    // which is crucial for tests involving user creation/authentication.
     use DatabaseMigrations;
 
     /**

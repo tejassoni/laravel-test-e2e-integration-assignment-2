@@ -7,6 +7,25 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
+/**
+ * Class LoginTest
+ *
+ * Browser test for verifying the user login functionality.
+ *
+ * This class uses Laravel Dusk to simulate end-to-end browser interactions
+ * for user authentication. It ensures that a registered user can log in
+ * through the login interface and be redirected appropriately.
+ *
+ * Key steps include:
+ * - Creating a test user using a factory.
+ * - Navigating to the login page.
+ * - Filling and submitting the login form.
+ * - Asserting redirection and content on the post-login page.
+ *
+ * @package Tests\Browser
+ * @author Tejas Soni
+ * @contact soni.tejas@live.com
+ */
 class LoginTest extends DuskTestCase
 {
     // This trait will ensure a fresh database for each test run,
@@ -60,7 +79,7 @@ class LoginTest extends DuskTestCase
             // Assert that specific text is visible on the page to confirm successful login.
             // This could be "Dashboard", "You are logged in!", the user's name, etc.
             $browser->assertSee('Dashboard'); // Example: Change to text that appears on your dashboard
-            $browser->pause(1500);
+            $browser->pause(1500); // 1.5 seconds wait
             $browser->screenshot('after-successful-login'); // Final screenshot of the successful state
         });
     }
