@@ -87,7 +87,6 @@ Laravel Dusk is a powerful browser automation testing tool. Here's how to set it
 
     **Note:**
     * **`DB_DATABASE=database/testing.sqlite`**: Remember to ensure this SQLite file exists in your `database/` directory. You can create it manually using `touch database/testing.sqlite`.
-    * **MySQL Configuration**: If you prefer to use MySQL for your Dusk tests, uncomment the MySQL section and provide your database credentials. Ensure the `test_database_dusk` database exists.
     * **`CHROME_PATH`**: Verify and update this path to the correct installation location of Google Chrome on your system.
     * **`DUSK_HEADLESS`**: Set this to `false` if you want to see the browser opening and interacting during the tests, which is useful for debugging. For continuous integration or hidden testing, set it to `true`.
 
