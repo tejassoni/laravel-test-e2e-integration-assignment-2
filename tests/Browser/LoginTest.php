@@ -76,10 +76,12 @@ class LoginTest extends DuskTestCase
             // Adjust '/dashboard' to your actual post-login redirect path (e.g., '/home').
             $browser->assertPathIs('/dashboard');
 
+            // $browser->pause(1500); // 1.5 seconds wait, Pause for observation
+            // $browser->waitForText("Tejas Soni",1500); // 1.5 seconds wait, Pause for observation
             // Assert that specific text is visible on the page to confirm successful login.
             // This could be "Dashboard", "You are logged in!", the user's name, etc.
             $browser->assertSee('Dashboard'); // Example: Change to text that appears on your dashboard
-            $browser->pause(1500); // 1.5 seconds wait, Pause for observation
+            $browser->assertSee('Tejas Soni'); // Example: Change to text that appears on your dashboard
             $browser->screenshot('after-successful-login'); // Final screenshot of the successful state
         });
     }
